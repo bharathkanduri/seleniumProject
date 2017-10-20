@@ -6,3 +6,5 @@ git push -u origin master
 
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
+
+hello
