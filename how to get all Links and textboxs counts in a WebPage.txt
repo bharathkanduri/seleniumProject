@@ -10,3 +10,9 @@ public void FBAllLinks()
 		{
 			System.out.println(linknames.get(i).getText());
 		}
+public void Texboxcount{	
+//to get the all textboxes Count in a FB Page
+		
+		List<WebElement> textboxes=driver.findElements(By.xpath("//input[@type='text']"));
+		System.out.println("textboxes count: " +textboxes.size());
+}
