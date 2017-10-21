@@ -1,6 +1,6 @@
 public void FBAllLinks()
 	{
-		//to get the all links Count in a FB Page
+		//to get the all links Count in a FaceBook Page
 		List<WebElement> linknames =driver.findElements(By.tagName("a"));
 		System.out.println("the count of links :"+linknames.size());
 		
