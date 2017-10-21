@@ -1,0 +1,33 @@
+Login(String mailid,String password)
+	{
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\Bharath Kanduri\\Downloads\\geckodriver-v0.13.0-win64\\geckodriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+		 driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("https://www.facebook.com/");
+		
+		    WebElement UserName=driver.findElement(By.id("email"));
+			UserName.sendKeys(mailid);
+			WebElement password1=driver.findElement(By.id("pass"));
+			password1.sendKeys(password);
+				
+		}
+	public void CreateNewFBAccount()
+	{
+		WebElement FirstName=driver.findElement(By.xpath(".//*[@id='u_0_g']"));
+		FirstName.sendKeys("done1");
+		WebElement surName=driver.findElement(By.xpath(".//*[@id='u_0_i']"));
+		surName.sendKeys("deal");
+		WebElement MbNumber=driver.findElement(By.xpath(".//*[@id='u_0_l']"));
+		MbNumber.sendKeys("9867183054");
+		WebElement NewPassword=driver.findElement(By.xpath(".//*[@id='u_0_s']"));
+		NewPassword.sendKeys("munna@1415");
+	}	
+
+	
+	public static void main(String[] args) {
+		Login FBLoginCredentials = new Login("kbharathkumar08@gmail.com","munna@1415");
+		//FBLoginCredentials.Login1();
+		//Login CFB = new Login();
+		FBLoginCredentials.CreateNewFBAccount();
+	}
