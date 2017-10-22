@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Login {
@@ -31,7 +33,7 @@ public class Login {
 	/*public void CreateNewFBAccount()
 	{
 		WebElement FirstName=driver.findElement(By.xpath(".//*[@id='u_0_g']"));
-		FirstName.sendKeys("Sriram");
+		FirstName.sendKeys("vijju");
 		WebElement surName=driver.findElement(By.xpath(".//*[@id='u_0_i']"));
 		surName.sendKeys("kanduris");
 		WebElement MbNumber=driver.findElement(By.xpath(".//*[@id='u_0_l']"));
@@ -95,10 +97,98 @@ public class Login {
 	{
 		WebElement  fbText=driver.findElement(By.xpath(".//*[@id='content']/div/div/div/div/div[1]/div/div"));
 		System.out.println(fbText.getText());
-		
-		
 	}
-	public static void main(String[] args) {
+	
+	public void clickOnForgetPassword() 
+	{
+		WebElement ForgetPassword=driver.findElement(By.linkText("Forgotten account?"));
+		ForgetPassword.click();
+		WebElement FindYoyrAccount=driver.findElement(By.className("uiHeaderTitle"));
+		
+		if(FindYoyrAccount.isDisplayed())
+		{
+			System.out.println("need to enter mail id");
+		}
+		else 
+			System.out.println("dnt enter the mail id");
+		
+		WebElement textinForgetpassword=	driver.findElement(By.xpath(".//*[@id='identify_yourself_flow']/div/div[2]/div/table/tbody/tr[1]/td[2]/div"));
+		String str=textinForgetpassword.getText();
+		System.out.println(str.toUpperCase());	
+		/*System.out.println(str.trim());
+		System.out.println(str.startsWith("a"));
+		System.out.println(str.startsWith("n"));
+		System.out.println(str.indexOf(22));
+*/
+		//WebDriver driver = new FirefoxDriver();
+		             
+				
+	}
+	
+	public void ScroolDown()
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollBy(0,500)", "");
+        //jse.executeScript("window.scrollBy(0,-500)", "");
+
+	}
+	
+	public void CLickOnFacebookFoot()
+	{
+		WebElement FBFooter= driver.findElement(By.xpath(".//*[@id='pageFooter']/div[3]/div/span"));
+		String FBfoot1=FBFooter.getText();
+        System.out.println(FBfoot1);            
+        
+	}
+	/*public void ScroolUp()
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+        //jse.executeScript("window.scrollBy(0,500)", "");
+        jse.executeScript("window.scrollBy(0,-500)", "");
+    }*/
+	
+	/*public void addLanguege()
+	{
+		try {
+			WebElement LanguageSelection=driver.findElement(By.xpath(".//*[@id='pageFooter']/ul/li[12]/a/i"));
+			LanguageSelection.click();
+								
+			WebElement CLicknTelugu = driver.findElement(By.xpath(".//*[@id='js_zj']"));
+			CLicknTelugu.click();
+			
+			WebDriver wait = new WebDriverWait(WebDriverRefrence,20);
+			
+			CLicknTelugu
+					//until(ExpectedConditions.visibilityOfElementLocated(By.id("about_me")));
+			
+		}
+		catch (Exception e) 
+		{
+			
+			System.out.println("not slected Specific Languge");
+		}
+*/	
+	public void Locations()
+	{
+		
+	try {
+		WebElement Loc1=driver.findElement(By.linkText("Locations"));
+		Loc1.click();
+	}
+	catch (Exception e) 
+	{
+	System.out.println("Element Not idetified");	
+	}
+	
+	//WebElement  h1=driver.findElement(By.xpath(".//*[@id='captcha']/h3"));
+	
+	WebElement Check=driver.findElement(By.linkText("Try another text"));
+	Check.click();
+	
+	}
+	public static void main(String[] args)     
+	{
+		
 		Login FBLoginCredentials = new Login();
 		//FBLoginCredentials.Login1();
 		//Login CFB = new Login();
@@ -107,6 +197,13 @@ public class Login {
 		FBLoginCredentials.FBAllLinks();
 		FBLoginCredentials.FBTextboxs();
 		FBLoginCredentials.textOfFbPage();
+		FBLoginCredentials.clickOnForgetPassword();
+		FBLoginCredentials.ScroolDown();
+		//FBLoginCredentials.addLanguege();
+		FBLoginCredentials.CLickOnFacebookFoot();
+		FBLoginCredentials.Locations();
+		
+		
 	}
 
 }
